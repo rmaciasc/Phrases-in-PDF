@@ -1,6 +1,9 @@
 import fitz
+import time
 import os
 import pandas as pd
+
+start_time = time.time()
 
 frases = ['derechos humanos', 
 'Derecho a una vida libre de violencia',
@@ -11,8 +14,10 @@ frases = ['derechos humanos',
 'niñas, niños', 'adolescentes', 'niñez', 'menores de edad', 
 'igualdad de género', 'equidad de género', 'perspectiva de género', 
 'mujer', 'mujeres']
+
+
 dir = os.getcwd()
-dir = os.path.join(dir, 'CNDH')
+dir = os.path.join(dir, 'PUEBLA')
 dir
 
 dic = {
@@ -50,5 +55,7 @@ df
 
 errorsDF = pd.DataFrame(errorsDic)
 
-df.to_csv('./Results/Bandos Resultados Fitz Text.csv', index=False, encoding= 'utf-8-sig')
+df.to_csv('./Results/Bandos Resultados Puebla Fitz Text.csv', index=False, encoding= 'utf-8-sig')
 errorsDF.to_csv('./Results/Errores Bandos Fitz Text.csv', index=False, encoding= 'utf-8-sig')
+
+print("--- %s seconds ---" % (time.time() - start_time))
